@@ -234,8 +234,6 @@ rect(x+42,y-49,5,52,'#9e8058');rect(x+47,y-49,27,17,factionColors[s.faction]);
 insect(x,y+58,factionSpecies[s.faction],time);pixText(s.npc,x,y+21,'#fff0b6',7);pixText(s.name,x,y-57,factionColors[s.faction],8);let cacheX=x+105,cacheY=y+58;rect(cacheX-15,cacheY-11,30,24,factionLoot.has('faction:'+s.id)?'#555449':'#b18b4c');rect(cacheX-10,cacheY-15,20,8,'#e3c577');pixText(factionLoot.has('faction:'+s.id)?'EMPTY':'SUPPLIES',cacheX,cacheY-24,'#e5cda0',7);if(Math.hypot(p.x-s.x,p.y-s.y)<85)pixText('E: TALK',x,y+93,'#f9e5ac',7);if(Math.hypot(p.x-(s.x+105),p.y-(s.y+58))<70)pixText('E: STEAL',cacheX,cacheY+32,'#ffb6a4',7)}for(let g of factionGuards){let x=g.x-camera.x,y=g.y-camera.y;if(x< -45||x>W+45||y< -45||y>H+45)continue;insect(x,y,factionSpecies[g.faction],time*2);rect(x-16,y-24,32,5,factionColors[g.faction]);pixText(factionBounty[g.faction]>0?'HUNTER':'PATROL',x,y-35,factionColors[g.faction],7);if(g.hp<80){rect(x-16,y-31,32*Math.max(0,g.hp)/80,3,'#d87e75')}}}
 
 let prev=performance.now();function loop(now){let dt=Math.min(.05,(now-prev)/1000);prev=now;update(dt);draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);addEventListener('beforeunload',save);
-})();
-</script></body></html>
 // STAGE 3A: region atmosphere, wilderness spaces, and bug-built structures.
 function drawSporeParticles(sx,sy,v){
   ctx.fillStyle='#d7d9a844';
@@ -295,4 +293,5 @@ function drawTravelerSprite(x,y){drawTravelerSprite2(x,y)}
 function building(b,x,y){if(b.type==='market'){drawHouseSprite(x,y,'#82714f','#ceb58a',true)}else if(b.type==='inn'){drawMushroomHome(x,y,'#8b6a9a','#c9b38d',false)}else if(b.type==='smith'){drawBurrowHome(x,y)}else{drawMushroomHome(x,y,'#8d5d63','#ceb68d',false)}pixText(b.name,x,y-40,'#f2d99e',7)}
 function landmark(q,x,y){if(q.type==='home'){drawBurrowHome(x,y)}else if(q.type==='ruin'){drawRuinSprite2(x,y)}else if(q.type==='cave'){drawCaveSprite2(x,y)}else{drawShrineSprite2(x,y)}pixText(q.name,x,y-44,'#f6e6ac',8);if(Math.hypot(p.x-q.x,p.y-q.y)<90)pixText('E: INTERACT',x,y+40,'#fff2c7',7)}
 
-
+})();
+</script></body></html>
